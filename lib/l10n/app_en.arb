@@ -1,0 +1,114 @@
+{
+  "@@locale": "en",
+  "appTitle": "Bhoomi",
+  "@appTitle": {
+    "description": "The application title"
+  },
+  
+  "welcomeBack": "Welcome back,",
+  "yourEcoJourney": "Your Eco Journey",
+  "ecoScore": "Eco-Score",
+  "outOf100": "out of 100",
+  "takeAction": "Take Action",
+  "calculate": "Calculate",
+  "learn": "Learn",
+  "community": "Community",
+  "profile": "Profile",
+  "todaysTip": "Today's Tip 💡",
+  "swipeForMore": "Swipe for more",
+  
+  "transport": "Transport",
+  "food": "Food",
+  "energy": "Energy",
+  "treesNeeded": "Trees Needed",
+  "toOffset": "to offset",
+  "co2PerMonth": "CO₂/month",
+  
+  "carbonCalculator": "Carbon Calculator",
+  "letsCalculate": "Let's calculate your carbon footprint",
+  "transportation": "Transportation 🚗",
+  "twoWheeler": "Two-Wheeler",
+  "car": "Car",
+  "publicTransport": "Public Transport",
+  "kmPerMonth": "km/month",
+  
+  "foodHabits": "Food Habits 🍽️",
+  "vegetarian": "Vegetarian",
+  "nonVegetarian": "Non-Vegetarian",
+  "mealsPerWeek": "meals/week",
+  
+  "energyUsage": "Energy Usage ⚡",
+  "selectYourState": "Select your state",
+  "electricityUnits": "Electricity Units",
+  "unitsPerMonth": "units/month",
+  
+  "calculateFootprint": "Calculate Footprint",
+  "viewResults": "View Results",
+  
+  "yourCarbonFootprint": "Your Carbon Footprint",
+  "totalEmissions": "Total Emissions",
+  "kgPerYear": "kg/year",
+  "aboveAverage": "Above Average",
+  "belowAverage": "Below Average",
+  "emissionsCompare": "Your emissions are {percent}% {comparison} than average Indian",
+  "@emissionsCompare": {
+    "description": "Comparison text",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "comparison": {
+        "type": "String"
+      }
+    }
+  },
+  "higher": "higher",
+  "lower": "lower",
+  "you": "You",
+  "average": "Average",
+  
+  "emissionsBreakdown": "Emissions Breakdown",
+  "recommendations": "Recommendations",
+  "backToHome": "Back to Home",
+  
+  "editProfile": "Edit Profile",
+  "name": "Name",
+  "city": "City",
+  "age": "Age",
+  "enterYourAge": "Enter your age",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "other": "Other",
+  "preferNotToSay": "Prefer not to say",
+  "notSpecified": "Not specified",
+  "saveChanges": "Save Changes",
+  "profileUpdated": "Profile updated!",
+  "yourImpact": "Your Impact",
+  "achievements": "Achievements",
+  
+  "getStarted": "Get Started",
+  "signInWithGoogle": "Sign in with Google",
+  "joinBhoomi": "Join Bhoomi and start your journey towards a sustainable lifestyle",
+  
+  "savesMonthly": "Saves: ₹200-300/month 💰",
+  
+  "language": "Language",
+  "selectLanguage": "Select Language",
+  "english": "English",
+  "hindi": "हिंदी",
+  "tamil": "தமிழ்",
+  "languageChanged": "Language changed!",
+  
+  "tipCycling": "🚲 Consider cycling or walking for short distances to reduce your transport emissions by 30%",
+  "tipPublicTransport": "🚌 Use public transport 2-3 times a week to save ₹500/month and reduce CO2",
+  "tipCarpooling": "🚗 Carpooling can reduce your transport emissions by 25% and save fuel costs",
+  "tipMeatlessMonday": "🥗 Try Meatless Mondays! Reducing meat by 2 meals/week can save 30kg CO2/month",
+  "tipLocalProduce": "🌱 Choose local and seasonal produce to reduce food emissions by 15%",
+  "tipPlantBased": "🥬 Great food choices! Try adding one more plant-based meal per week",
+  "tipLED": "💡 Switch to LED bulbs and save ₹800/year on electricity bills",
+  "tipAC": "❄️ Set AC temperature to 24°C to reduce energy consumption by 20%",
+  "tipUnplug": "🔌 Unplug devices when not in use - phantom power costs ₹500/year",
+  "tipSolar": "☀️ Consider solar panels for long-term savings and clean energy",
+  "tipAmazing": "🌟 Amazing! You're below average Indian carbon footprint. Keep it up!"
+}

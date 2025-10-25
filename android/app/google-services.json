@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "765895929379",
+    "project_id": "bhoomi-bb321",
+    "storage_bucket": "bhoomi-bb321.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765895929379:android:c7986dbb47b105b557cb96",
+        "android_client_info": {
+          "package_name": "com.hypin.bhoomi_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765895929379-b14ntdcdlf8aprmn436j4ouvdr3f9eca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hypin.bhoomi_v1",
+            "certificate_hash": "b037e64aea9077a15107c778b5165d60516bef08"
+          }
+        },
+        {
+          "client_id": "765895929379-cfrpnvouotcnqds1r7h1vk9lku3vbgkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIJSZt3y5-inVatNUnrUmMlX2W48457K4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765895929379-cfrpnvouotcnqds1r7h1vk9lku3vbgkk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

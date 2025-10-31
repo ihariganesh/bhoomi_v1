@@ -43,3 +43,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Backend Node.js
+bhoomi_backend/node_modules/
+bhoomi_backend/.env
+bhoomi_backend/package-lock.json
+
+# Python virtual environment and cache
+virtual_smart_meter/__pycache__/
+virtual_smart_meter/*.pyc
+virtual_smart_meter/venv/
+virtual_smart_meter/.env

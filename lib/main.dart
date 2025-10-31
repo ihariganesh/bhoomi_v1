@@ -13,21 +13,32 @@ import 'screens/login_screen.dart';
 import 'utils/app_theme.dart';
 import 'l10n/app_localizations.dart';
 
+// Enable offline/development mode (set to true to skip Firebase authentication)
+const bool kOfflineMode = true;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize Firebase only on supported platforms (not Linux desktop)
-  if (!kIsWeb && defaultTargetPlatform != TargetPlatform.linux) {
+
+  // Initialize Firebase only when NOT in offline mode and on supported platforms
+  bool firebaseInitialized = false;
+  if (!kOfflineMode &&
+      !kIsWeb &&
+      defaultTargetPlatform != TargetPlatform.linux) {
     try {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
+      firebaseInitialized = true;
+      print('✅ Firebase initialized successfully');
     } catch (e) {
-      // Firebase already initialized, continue
-      print('Firebase initialization: $e');
+      // Firebase initialization failed, continue in offline mode
+      print('⚠️ Firebase initialization failed: $e');
+      print('📴 Running in offline mode');
     }
+  } else {
+    print('📴 Running in offline/development mode (Firebase disabled)');
   }
-  
+
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -35,12 +46,14 @@ void main() async {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
-  
-  runApp(const BhoomiApp());
+
+  runApp(BhoomiApp(firebaseEnabled: firebaseInitialized));
 }
 
 class BhoomiApp extends StatelessWidget {
-  const BhoomiApp({super.key});
+  final bool firebaseEnabled;
+
+  const BhoomiApp({super.key, this.firebaseEnabled = false});
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +80,11 @@ class BhoomiApp extends StatelessWidget {
               Locale('hi', ''), // Hindi
               Locale('ta', ''), // Tamil
             ],
-            // For Linux desktop, skip authentication and go directly to HomeScreen
-            home: (defaultTargetPlatform == TargetPlatform.linux)
+            // If offline mode or Linux, skip authentication
+            home:
+                (kOfflineMode ||
+                    !firebaseEnabled ||
+                    defaultTargetPlatform == TargetPlatform.linux)
                 ? const HomeScreen()
                 : StreamBuilder<User?>(
                     stream: FirebaseAuth.instance.authStateChanges(),
@@ -77,12 +93,12 @@ class BhoomiApp extends StatelessWidget {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const SplashScreen();
                       }
-                      
+
                       // If user is logged in, go to home screen
                       if (snapshot.hasData && snapshot.data != null) {
                         return const HomeScreen();
                       }
-                      
+
                       // Otherwise show login screen
                       return const LoginScreen();
                     },
@@ -101,7 +117,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;

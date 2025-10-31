@@ -12,6 +12,8 @@ import 'knowledge_screen.dart';
 import 'community_screen.dart';
 import 'profile_screen.dart';
 import 'results_screen.dart';
+import 'ai_chatbot_screen.dart';
+import 'travel_mode_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,7 +22,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
@@ -76,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   Widget _buildHeader(BuildContext context) {
     final appState = Provider.of<AppState>(context);
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -140,11 +143,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               shape: BoxShape.circle,
               boxShadow: AppTheme.glassBoxShadow,
             ),
-            child: const Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 28,
-            ),
+            child: const Icon(Icons.person, color: Colors.white, size: 28),
           ),
         ),
       ],
@@ -164,10 +163,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [
-          Colors.white.withOpacity(0.2),
-          Colors.white.withOpacity(0.05),
-        ],
+        colors: [Colors.white.withOpacity(0.2), Colors.white.withOpacity(0.05)],
       ),
       child: Column(
         children: [
@@ -182,7 +178,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   gradient: AppTheme.purpleGradient,
                   borderRadius: BorderRadius.circular(20),
@@ -213,7 +212,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ShaderMask(
-                  shaderCallback: (bounds) => AppTheme.primaryGradient.createShader(bounds),
+                  shaderCallback: (bounds) =>
+                      AppTheme.primaryGradient.createShader(bounds),
                   child: Text(
                     ecoScore.toStringAsFixed(0),
                     style: Theme.of(context).textTheme.displayLarge?.copyWith(
@@ -350,10 +350,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [
-          color.withOpacity(0.1),
-          Colors.white.withOpacity(0.05),
-        ],
+        colors: [color.withOpacity(0.1), Colors.white.withOpacity(0.05)],
       ),
       enableHoverEffect: true,
       child: Column(
@@ -387,9 +384,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           const SizedBox(height: 2),
           Text(
             subtitle,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppTheme.textSecondary,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: AppTheme.textSecondary),
           ),
         ],
       ),
@@ -401,11 +398,44 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.takeAction,
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+        Text(l10n.takeAction, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 15),
+        // NEW: AI Chatbot Button (Full Width)
+        _buildActionButton(
+          context,
+          icon: FontAwesomeIcons.robot,
+          title: '🤖 AI Eco Assistant',
+          gradient: const LinearGradient(
+            colors: [Color(0xFF4CAF50), Color(0xFF66BB6A)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AIChatbotScreen()),
+            );
+          },
+        ),
+        const SizedBox(height: 12),
+        // Travel Mode Button (Full Width)
+        _buildActionButton(
+          context,
+          icon: FontAwesomeIcons.car,
+          title: '🚗 Travel Mode',
+          gradient: const LinearGradient(
+            colors: [Color(0xFF2196F3), Color(0xFF64B5F6)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TravelModeScreen()),
+            );
+          },
+        ),
+        const SizedBox(height: 12),
         Row(
           children: [
             Expanded(
@@ -417,7 +447,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CalculatorScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const CalculatorScreen(),
+                    ),
                   );
                 },
               ),
@@ -432,7 +464,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const KnowledgeScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const KnowledgeScreen(),
+                    ),
                   );
                 },
               ),
@@ -451,7 +485,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CommunityScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const CommunityScreen(),
+                    ),
                   );
                 },
               ),
@@ -466,7 +502,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ResultsScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const ResultsScreen(),
+                    ),
                   );
                 },
               ),

@@ -53,9 +53,8 @@ dependencies:
   shared_preferences: ^2.2.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  
-  # Internationalization
-  intl: ^0.20.2
+  sqflite: ^2.3.3
+  path_provider: ^2.1.5
   
   # Icons
   font_awesome_flutter: ^10.7.0
@@ -70,6 +69,40 @@ dependencies:
   firebase_core: ^3.8.1
   firebase_auth: ^5.3.3
   google_sign_in: ^6.2.2
+  
+  # NEW ADVANCED FEATURES
+  # Image & Media
+  image_picker: ^1.1.2
+  cached_network_image: ^3.4.1
+  photo_view: ^0.15.0
+  
+  # Location & Maps
+  geolocator: ^13.0.2
+  geocoding: ^3.0.0
+  permission_handler: ^11.3.1
+  
+  # Fitness & Health Integration
+  health: ^13.1.4
+  pedometer: ^4.0.2
+  
+  # Offline Sync & Database
+  connectivity_plus: ^6.1.0
+  http: ^1.2.2
+  dio: ^5.7.0
+  
+  # Advanced Charts & Visualization
+  # syncfusion_flutter_charts: ^27.2.5  # Commented out due to intl version conflict
+  shimmer: ^3.0.0
+  confetti: ^0.7.0
+  
+  # Notifications
+  flutter_local_notifications: ^18.0.1
+  
+  # Utils & Helpers
+  url_launcher: ^6.3.1
+  share_plus: ^10.1.2
+  package_info_plus: ^8.1.1
+  device_info_plus: ^10.1.2
 
 dev_dependencies:
   flutter_test:

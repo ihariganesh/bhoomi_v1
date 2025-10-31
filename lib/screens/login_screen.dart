@@ -14,7 +14,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final AuthService _authService = AuthService();
   bool _isLoading = false;
   late AnimationController _animationController;
@@ -33,10 +34,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
 
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeOutCubic));
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
     _animationController.forward();
   }
@@ -58,20 +62,20 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           final appState = Provider.of<AppState>(context, listen: false);
           final displayName = user.displayName ?? 'User';
           final email = user.email ?? '';
-          
+
           // Extract city from email or use default
           String city = 'Mumbai';
           if (email.isNotEmpty) {
             // You can add logic to extract city from email domain or use a default
             city = 'Mumbai'; // Default for now
           }
-          
+
           // Update and save profile immediately
           appState.updateUserProfile(displayName, city);
           // Small delay to ensure save completes
           await Future.delayed(const Duration(milliseconds: 100));
         }
-        
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -92,9 +96,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppTheme.backgroundGradient,
-        ),
+        decoration: const BoxDecoration(gradient: AppTheme.backgroundGradient),
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -145,11 +147,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 ),
               ],
             ),
-            child: const Icon(
-              Icons.eco,
-              size: 80,
-              color: Colors.white,
-            ),
+            child: const Icon(Icons.eco, size: 80, color: Colors.white),
           ),
         );
       },
@@ -170,9 +168,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         const SizedBox(height: 12),
         Text(
           'Join us in creating a sustainable future',
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppTheme.textSecondary,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(color: AppTheme.textSecondary),
           textAlign: TextAlign.center,
         ),
       ],
@@ -180,13 +178,37 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   }
 
   Widget _buildSignInButtons() {
-    return _buildSocialButton(
-      icon: FontAwesomeIcons.google,
-      label: 'Continue with Google',
-      gradient: const LinearGradient(
-        colors: [Color(0xFF4285F4), Color(0xFF34A853)],
-      ),
-      onTap: _isLoading ? null : _handleGoogleSignIn,
+    return Column(
+      children: [
+        _buildSocialButton(
+          icon: FontAwesomeIcons.google,
+          label: 'Continue with Google',
+          gradient: const LinearGradient(
+            colors: [Color(0xFF4285F4), Color(0xFF34A853)],
+          ),
+          onTap: _isLoading ? null : _handleGoogleSignIn,
+        ),
+        const SizedBox(height: 20),
+        TextButton.icon(
+          onPressed: _isLoading
+              ? null
+              : () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
+          icon: const Icon(Icons.login, color: AppTheme.primaryGreen),
+          label: const Text(
+            'Continue without login',
+            style: TextStyle(
+              color: AppTheme.primaryGreen,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -251,9 +273,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       children: [
         Text(
           'By continuing, you agree to our',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppTheme.textSecondary,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: AppTheme.textSecondary),
         ),
         const SizedBox(height: 8),
         Row(

@@ -112,7 +112,7 @@ Educational content in **Hindi and English**:
 
 1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ihariganesh/bhoomi_v1.git
 cd bhoomi_v1
 ```
 
@@ -229,7 +229,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work*
+- **Hariganesh** - *Initial work* - [ihariganesh](https://github.com/ihariganesh)
 
 ## 🙏 Acknowledgments
 
@@ -240,7 +240,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Support
 
-For support, email [your-email@example.com] or create an issue in this repository.
+For support, create an issue in this repository at [github.com/ihariganesh/bhoomi_v1/issues](https://github.com/ihariganesh/bhoomi_v1/issues).
 
 ---
 
